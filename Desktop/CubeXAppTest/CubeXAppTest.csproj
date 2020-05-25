@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>CubeX</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\Output\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Output\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="CubeXTestApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DataGridExtensions" Version="2.3.0" />
+    <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="4.6.82" />
+    <PackageReference Include="DotNetProjects.WpfToolkit.Input" Version="6.0.79" />
+    <PackageReference Include="DotNetProjects.WpfToolkit.Layout" Version="6.0.79" />
+    <PackageReference Include="DotNetProjects.WpfToolkit.Themes" Version="6.0.79" />
+    <PackageReference Include="WindowsAPICodePack-Core" Version="1.1.2" />
+    <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\CubeXWindows\CubeXWindows.csproj" />
+  </ItemGroup>
+
+</Project>

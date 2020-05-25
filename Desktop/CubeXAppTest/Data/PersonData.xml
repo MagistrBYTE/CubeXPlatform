@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Repository UniqueID="PersonData" Name="Данные о персоне">
+  <Scheme>
+    <Column Name="Name" DataTypeCode="String" Caption="Имя человека" />
+    <Column Name="Age" DataTypeCode="Int32" Caption="Возрат человека" />
+    <Column Name="Family" DataTypeCode="String" Caption="Фамилия человека" />
+  </Scheme>
+  <Record Name="Даниил" Age="36" Family="Дементьев"/>
+  <Record Name="Михаил" Age="32" Family="Дементьев"/>
+  <Record Name="Петя" Age="16" Family="Петров"/>
+</Repository>

@@ -1,0 +1,99 @@
+﻿<Window x:Class="CubeX.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+		xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Layout.Toolkit"
+		xmlns:WindowsAPICodePackPresentation="clr-namespace:Microsoft.WindowsAPICodePack.Controls.WindowsPresentationFoundation;assembly=Microsoft.WindowsAPICodePack.Shell"
+		xmlns:WindowsAPICodePackShell="clr-namespace:Microsoft.WindowsAPICodePack.Shell;assembly=Microsoft.WindowsAPICodePack.Shell"
+		xmlns:dgx="urn:tom-englert.de/DataGridExtensions"
+		mc:Ignorable="d"
+		Title="MainWindow" Height="450" Width="800"
+		Loaded="OnWindow_Loaded">
+	<TabControl>
+		<TabItem Header="Общие элементы">
+			<StackPanel Orientation="Vertical" Margin="8">
+				<StackPanel Orientation="Horizontal" Margin="8">
+					<Menu>
+						<CubeXMenuItemIcon Command="{x:Static XCommandManager.FileClose}"/>
+					</Menu>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Margin="8">
+					<TextBlock Margin="4" Text="CubeXTextBox" VerticalAlignment="Center"/>
+					<CubeXTextBox Margin="4" x:Name="ss" MinWidth="120"  VerticalContentAlignment="Center"  Text="" PlaceholderText="Введите техт..." ShowButtonClear="True"/>
+
+					<TextBlock Margin="4" Text="CubeXNumericEditor" VerticalAlignment="Center"/>
+					<CubeXNumericEditor Margin="4" x:Name="ddd" Width="120" MaxValue="12000" Value="5666"/>
+
+					<TextBlock Margin="4" Text="CubeXMeasurementEditor" VerticalAlignment="Center"/>
+					<CubeXMeasurementEditor Margin="4" x:Name="wer" Width="120" MaxValue="12000"/>
+
+					<TextBlock Margin="4" Text="CubeXVector2DEditor" VerticalAlignment="Center"/>
+					<CubeXVector2DEditor x:Name="sss2"/>
+
+					<TextBlock Margin="4" Text="CubeXVector3DEditor" VerticalAlignment="Center"/>
+					<CubeXVector3DEditor x:Name="sss3"/>
+
+					<TextBlock Margin="4" Text="CubeXButtonCommandIcon" VerticalAlignment="Center"/>
+					<CubeXButtonCommandIcon Margin="4" Width="120" Command="{x:Static XCommandManager.EditCopy}" />
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" Margin="8">
+
+					<TextBlock Margin="4" Text="CubeXColorPicker" VerticalAlignment="Center"/>
+					<CubeXColorPicker Padding="2" Width="200"/>
+
+					<TextBlock Margin="4" Text="CubeXGrowlNotification" VerticalAlignment="Center"/>
+					<Button x:Name="showNotifyButton" Margin="4" Content="Show notification" Click="OnShowNotifyButton_Click"  />
+				</StackPanel>
+
+				<GroupBox Header="Элементы запросы">
+					<StackPanel Orientation="Horizontal" Margin="8">
+
+						<TextBlock Margin="4" Text="QueryStringControl" VerticalAlignment="Center"/>
+						<CubeXQueryStringControl Padding="2" Width="200"/>
+
+						<TextBlock Margin="4" Text="QueryNumberControl" VerticalAlignment="Center"/>
+						<CubeXQueryNumberControl Padding="2" Width="200"/>
+
+						<TextBlock Margin="4" Text="QueryEnumControl" VerticalAlignment="Center"/>
+						<CubeXQueryEnumControl Padding="2" Width="200"/>
+
+						<TextBlock Margin="4" Text="QueryDatetimeControl" VerticalAlignment="Center"/>
+						<CubeXQueryDatetimeControl Padding="2" Width="200"/>
+
+					</StackPanel>
+				</GroupBox>
+
+				<GroupBox Header="Таблица">
+					<StackPanel Orientation="Vertical">
+						<CheckBox x:Name="filterData" Content="Фильтр"/>
+						<CubeXColumnOptionControl/>
+						<CubeXColumnFilterControl/>
+						<CubeXDataGrid x:Name="dataRecord" CanUserAddRows="False" 
+									   IsShowFilterColumn="{Binding ElementName=filterData, Path=IsChecked}">
+						</CubeXDataGrid>
+					</StackPanel>
+				</GroupBox>
+
+				<GroupBox Header="Презентаторы контента">
+					<StackPanel Orientation="Vertical">
+						<!--<CubeXDataGrid x:Name="dataRecord" dgx:DataGridFilter.IsAutoFilterEnabled="False"
+							   dgx:DataGridFilter.GlobalFilter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=FilterPredicate}">
+						</CubeXDataGrid>-->
+					</StackPanel>
+				</GroupBox>
+			</StackPanel>
+		</TabItem>
+
+		<TabItem Header="Испектор свойств">
+			<StackPanel Orientation="Horizontal">
+				<CubeXPropertyInspector x:Name="propertyInspector" MaxWidth="400"/>
+			</StackPanel>
+		</TabItem>
+	</TabControl>
+
+
+
+</Window>
