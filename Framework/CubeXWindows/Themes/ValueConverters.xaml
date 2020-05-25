@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:win="clr-namespace:CubeX.Windows">
+
+	<!--Конверторы логического типа-->
+	<win:BooleanInverseConverter x:Key="BooleanInverseConverterKey"/>
+	<win:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverterKey"/>
+	<win:BooleanInverseToVisibilityConverter x:Key="BooleanInverseToVisibilityConverterKey"/>
+	<win:BooleanNullToVisibilityConverter x:Key="BooleanNullToVisibilityConverterKey"/>
+	<win:BooleanTrueToCollapsedConverter x:Key="BooleanTrueToCollapsedConverterKey"/>
+	<win:BooleanFalseToCollapsedConverter x:Key="BooleanFalseToCollapsedConverterKey"/>
+
+	<win:VisibilityToBooleanNullConverter x:Key="VisibilityToBooleanNullConverterKey"/>
+
+	<!--Конверторы вещественного типа-->
+	<win:DoubleToStringConverter x:Key="DoubleToStringConverterKey"/>
+	<win:DoubleOffsetConverter x:Key="DoubleOffsetConverterKey"/>
+
+	<!--Конверторы числовых типов-->
+	<win:NumberToDoubleConverter x:Key="NumberToDoubleConverterKey"/>
+	<win:NumberToDecimalConverter x:Key="NumberToDecimalConverterKey"/>
+
+	<!--Конверторы типа перечисления-->
+	<win:EnumToIntConverter x:Key="EnumToIntConverterKey"/>
+	<win:EnumToStringConverter x:Key="EnumToStringConverterKey"/>
+
+	<!--Конверторы типа Point-->
+	<win:PointToStringConverter x:Key="PointToStringConverterKey" />
+
+	<!--Конверторы типа Size-->
+	<win:SizeToStringConverter x:Key="SizeToStringConverterKey" />
+
+	<!--Конверторы типа Rect-->
+	<win:RectToStringConverter x:Key="RectToStringConverterKey"/>
+
+</ResourceDictionary>

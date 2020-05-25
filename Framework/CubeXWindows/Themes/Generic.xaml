@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.MergedDictionaries>
+
+		
+		<ResourceDictionary Source="pack://application:,,,/CubeXWindows;component/Source/WPF/Controls/Layout/ContentViewer/CubeXContentViewerTemplate.xaml" />
+
+		<ResourceDictionary Source="pack://application:,,,/CubeXWindows;component/Themes/Brushes.xaml"/>
+		<ResourceDictionary Source="pack://application:,,,/CubeXWindows;component/Themes/Pens.xaml"/>
+		<ResourceDictionary Source="pack://application:,,,/CubeXWindows;component/Themes/ValueConverters.xaml"/>
+		<ResourceDictionary Source="pack://application:,,,/CubeXWindows;component/Themes/DataTemplates.xaml"/>
+		<ResourceDictionary Source="pack://application:,,,/CubeXWindows;component/Themes/ElementStyles.xaml"/>
+
+	</ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

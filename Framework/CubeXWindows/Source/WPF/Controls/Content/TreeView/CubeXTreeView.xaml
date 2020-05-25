@@ -1,0 +1,77 @@
+﻿<TreeView x:Class="CubeX.Windows.CubeXTreeView"
+			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			mc:Ignorable="d" 
+			d:DesignHeight="800" d:DesignWidth="300"
+			Loaded="OnTreeView_Loaded"
+			SelectedItemChanged="OnTreeView_SelectedItemChanged"
+			PreviewMouseLeftButtonDown="OnTreeView_PreviewMouseLeftButtonDown"
+			PreviewMouseLeftButtonUp="OnTreeView_PreviewMouseLeftButtonUp"
+			PreviewMouseMove="OnTreeView_PreviewMouseMove"
+			DragOver="OnTreeView_DragOver"
+			DragEnter="OnTreeView_DragEnter"
+			DragLeave="OnTreeView_DragLeave"
+			GiveFeedback="OnTreeView_GiveFeedback"
+			Drop="OnTreeView_Drop"
+			x:Name="treeExplorer">
+	<TreeView.Resources>
+		<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+		<SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+		<LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" EndPoint="0,1" StartPoint="0,0">
+			<GradientStop Color="#FFE0F0FF" Offset="0"/>
+			<GradientStop Color="#FFABE0FF" Offset="1"/>
+		</LinearGradientBrush>
+		<LinearGradientBrush x:Key="{x:Static SystemColors.ControlBrushKey}" EndPoint="0,1" StartPoint="0,0">
+			<GradientStop Color="#FFEEEEEE" Offset="0"/>
+			<GradientStop Color="#FFDDDDDD" Offset="1"/>
+		</LinearGradientBrush>
+
+		<!-- Drag and Drop Popup -->
+		<Popup x:Key="popupHandKey"
+			IsHitTestVisible="False"
+			Placement="RelativePoint"
+			PlacementTarget="{Binding ElementName=treeExplorer}"
+			AllowsTransparency="True">
+			<Border BorderBrush="LightSteelBlue"
+					BorderThickness="2"
+					Background="White"
+					Opacity="0.75">
+				<StackPanel Orientation="Horizontal"
+							Margin="4,3,8,3">
+					<TextBlock FontSize="14" FontWeight="Bold" VerticalAlignment="Center"
+							   Text="{Binding ElementName=treeExplorer, Path=DraggedModel.Name}"
+							   Margin="8,0,0,0" />
+				</StackPanel>
+			</Border>
+		</Popup>
+
+	</TreeView.Resources>
+	<TreeView.ItemContainerStyle>
+		<Style TargetType="{x:Type TreeViewItem}">
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}" />
+			<Setter Property="Visibility" Value="{Binding Path=IsMatch, Mode=OneWay, Converter={StaticResource ResourceKey=BooleanToVisibilityConverterKey}}"/>
+			<EventSetter Event="MouseDoubleClick" Handler="OnTreeViewItem_MouseDoubleClick" />
+			<EventSetter Event="ContextMenuOpening" Handler="OnTreeViewItem_ContextMenuOpening" />
+			<Style.Triggers>
+				<Trigger Property="IsSelected" Value="True">
+					<Setter Property="BorderBrush" Value="#FFABC0F0"/>
+				</Trigger>
+				<MultiTrigger>
+					<MultiTrigger.Conditions>
+						<Condition Property="IsSelected" Value="True"/>
+						<Condition Property="IsSelectionActive" Value="False"/>
+					</MultiTrigger.Conditions>
+					<Setter Property="BorderBrush" Value="LightGray"/>
+				</MultiTrigger>
+			</Style.Triggers>
+			<Style.Resources>
+				<Style TargetType="Border">
+					<Setter Property="CornerRadius" Value="1"/>
+				</Style>
+			</Style.Resources>
+		</Style>
+	</TreeView.ItemContainerStyle>
+</TreeView>

@@ -1,0 +1,290 @@
+﻿<Window x:Class="CubeX.Windows.CubeXRepositoryDatabaseViewer"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+				xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:data="clr-namespace:System.Data;assembly=System.Data.Common"
+				xmlns:ctrl="clr-namespace:CubeX.Windows"
+				mc:Ignorable="d"
+		x:Name="windowRepository"
+				Title="Просмотр базы данных" Height="800" Width="1200">
+	<Window.Resources>
+
+		<!--Шаблоны данных для ограничений-->
+		<ctrl:DataColumnToBitmapSourceConverter x:Key="DataColumnToBitmapSourceConverterKey"
+										 Default="/CubeXWindows;component/Resources/Icons/Status/Gloss_basic_bullet_brown_32.png"
+										 Unique="/CubeXWindows;component/Resources/Icons/Status/Gloss_basic_bullet_green_32.png"
+										 ForeignKey="/CubeXWindows;component/Resources/Icons/Database/Pixelicious_key_notice_32.png"
+										 >
+		</ctrl:DataColumnToBitmapSourceConverter>
+
+		<DataTemplate x:Key="UniqueConstraintKey" DataType="{x:Type data:UniqueConstraint}">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock>
+					<Run Text="Поле "/>
+					<Run FontWeight="Bold" Text="{Binding Columns[0].ColumnName}"/>
+					<Run Text=" должно быть уникальным"/>
+				</TextBlock>
+			</StackPanel>
+		</DataTemplate>
+
+		<DataTemplate x:Key="ForeignKeyConstraintKey" DataType="{x:Type data:ForeignKeyConstraint}">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock>
+					<Run Text="Поле "/>
+					<Run FontWeight="Bold" Text="{Binding Columns[0].ColumnName}"/>
+					<Run Text=" зависит от поля"/>
+					<Run FontWeight="Bold" Text="{Binding RelatedColumns[0].ColumnName}"/>
+					<Run Text=" таблицы "/>
+					<Run FontWeight="Bold" Text="{Binding RelatedColumns[0].Table.TableName}"/>
+				</TextBlock>
+			</StackPanel>
+		</DataTemplate>
+
+		<ctrl:CRepositoryDataConstraintSelector x:Key="RepositoryDataConstraintSelectorKey"
+											Unique="{StaticResource UniqueConstraintKey}"
+											ForeignKey="{StaticResource ForeignKeyConstraintKey}"/>
+
+		<!--Шаблоны данных для таблицы-->
+		<HierarchicalDataTemplate x:Key="DataTableKey" DataType="{x:Type data:DataTable}" ItemsSource="{Binding Columns}">
+			<Border Width="280" CornerRadius="4" BorderThickness="1" BorderBrush="Blue">
+				<StackPanel Orientation="Horizontal">
+					<Image Margin="4" Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Table/Gloss_basic_table_32.png"/>
+					<StackPanel>
+						<TextBlock VerticalAlignment="Center" Margin="2" Width="250" FontSize="12" FontWeight="Bold"
+										 TextWrapping="Wrap"
+										 Text="{Binding Path=DisplayExpression}"/>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock VerticalAlignment="Center" Margin="2" FontSize="10" 
+											 Text="{Binding Path=TableName}"
+											 ToolTip="Наименование таблицы в базе данных"/>
+							<TextBlock VerticalAlignment="Center" Margin="2" FontSize="10" Foreground="Blue" 
+										 Text="{Binding Path=Rows.Count, StringFormat='[{0}]'}"
+											 ToolTip="Количество загруженных строк"/>
+						</StackPanel>
+					</StackPanel>
+				</StackPanel>
+			</Border>
+		</HierarchicalDataTemplate>
+
+		<DataTemplate x:Key="DataColumnKey" DataType="{x:Type data:DataColumn}">
+			<StackPanel Orientation="Vertical">
+				<StackPanel Orientation="Horizontal">
+					<Image x:Name="imageSymbol" Margin="4" Width="20" Height="20" 
+							 Source="{Binding Converter={StaticResource DataColumnToBitmapSourceConverterKey}}"/>
+					<StackPanel Orientation="Vertical">
+						<TextBlock VerticalAlignment="Center" Margin="2" FontSize="14" FontWeight="Bold" Text="{Binding Path=Caption}"/>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock VerticalAlignment="Center" Margin="2" FontSize="12" MinWidth="80"
+										 Text="{Binding Path=ColumnName}"
+										 ToolTip="Имя столбца в таблице"/>
+							<TextBlock VerticalAlignment="Center" Margin="2" FontSize="12" Foreground="Blue" 
+										 Text="{Binding Path=DataType.Name, StringFormat='[{0}]'}"
+											 ToolTip="Тип данных столбца"/>
+							<TextBlock VerticalAlignment="Center" Margin="2" FontSize="12" Foreground="Blue" 
+										 Text="[Unique]" Visibility="{Binding Unique, Converter={StaticResource BooleanFalseToCollapsedConverterKey}}"
+											 ToolTip="Значение столбца должны быть уникальными"/>
+							<TextBlock VerticalAlignment="Center" Margin="2" FontSize="12" Foreground="Blue" 
+										 Text="[NotNull]" Visibility="{Binding AllowDBNull, Converter={StaticResource BooleanTrueToCollapsedConverterKey}}"
+											 ToolTip="НЕ допускается значения NULL столбца"/>
+						</StackPanel>
+					</StackPanel>
+				</StackPanel>
+			</StackPanel>
+		</DataTemplate>
+
+		<ctrl:CRepositoryDataEntitySelector x:Key="RepositoryDataEntitySelectorKey"
+											Table="{StaticResource DataTableKey}"
+											Column="{StaticResource DataColumnKey}"/>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="30*"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="70*"/>
+			</Grid.ColumnDefinitions>
+
+			<ctrl:CubeXStackPanel Grid.Column="0" Orientation="Vertical" >
+				
+				<!--База данных-->
+				<GroupBox Margin="2 8 2 2">
+					<GroupBox.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Database/Fatcow_database_32.png"/>
+							<TextBlock  Margin="2" Text="База данных" Style="{StaticResource TextBlockHeaderStyleKey}" />
+						</StackPanel>
+					</GroupBox.Header>
+					<ctrl:CubeXStackPanel Orientation="Vertical">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock  Margin="4" MinWidth="140" Text="Источник:" Style="{StaticResource TextBlockStatusStyleKey}" />
+							<TextBlock  Margin="4" Text="{Binding ElementName=windowRepository, Path=Repository.SourceName}" Style="{StaticResource TextBlockParametrStyleKey}" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock  Margin="4" MinWidth="140" Text="Имя базы данных:" Style="{StaticResource TextBlockStatusStyleKey}" />
+							<TextBlock  Margin="4" Text="{Binding ElementName=windowRepository, Path=Repository.DatabaseName}" Style="{StaticResource TextBlockParametrStyleKey}" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock  Margin="4" MinWidth="140" Text="Пользователь:" Style="{StaticResource TextBlockStatusStyleKey}" />
+							<TextBlock  Margin="4" Text="{Binding ElementName=windowRepository, Path=Repository.Login}" Style="{StaticResource TextBlockParametrStyleKey}" />
+						</StackPanel>
+
+						<ctrl:CubeXStackPanel Orientation="Horizontal">
+							<Button Margin="2" x:Name="buttonSaveDatabase" IsEnabled="False" ctrl:CubeXStackPanel.Fill="Fill" 
+									Click="OnButtonSaveDatabase_Click"
+									ToolTip="Сохранить изменения в базу данных">
+								<Button.Content>
+									<StackPanel Orientation="Horizontal">
+										<Image Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Database/Fatcow_database_save_32.png"/>
+										<TextBlock  Margin="2" Text="Сохранить" VerticalAlignment="Center"/>
+									</StackPanel>
+								</Button.Content>
+							</Button>
+							<Button Margin="2" x:Name="buttonRestoreDatabase" IsEnabled="False" ctrl:CubeXStackPanel.Fill="Fill" 
+									Click="OnButtonRestoreDatabase_Click"
+									ToolTip="Восстановить данные с базы данных с момента последнего сохранения">
+								<Button.Content>
+									<StackPanel Orientation="Horizontal">
+										<Image Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Database/Fatcow_database_refresh_32.png"/>
+										<TextBlock  Margin="2" Text="Восстановить" VerticalAlignment="Center"/>
+									</StackPanel>
+								</Button.Content>
+							</Button>
+						</ctrl:CubeXStackPanel>
+					</ctrl:CubeXStackPanel>
+				</GroupBox>
+
+				<!--Таблицы-->
+				<GroupBox Margin="2 8 2 2" ctrl:CubeXStackPanel.Fill="Fill">
+					<GroupBox.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Table/Gloss_basic_table_32.png"/>
+							<TextBlock  Margin="4 2 2 2" Text="Список таблиц" Style="{StaticResource TextBlockHeaderStyleKey}" />
+						</StackPanel>
+					</GroupBox.Header>
+
+					<ctrl:CubeXStackPanel Orientation="Vertical">
+						<TreeView x:Name="treeTables" Margin="2" ctrl:CubeXStackPanel.Fill="Fill" 
+							SelectedItemChanged="OnTreeTables_SelectedItemChanged"
+							ItemTemplateSelector="{StaticResource RepositoryDataEntitySelectorKey}">
+							<TreeView.Resources>
+								<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+								<SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="Black" />
+								<LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" EndPoint="0,1" StartPoint="0,0">
+									<GradientStop Color="#FFE0F0FF" Offset="0"/>
+									<GradientStop Color="#FFABE0FF" Offset="1"/>
+								</LinearGradientBrush>
+								<LinearGradientBrush x:Key="{x:Static SystemColors.ControlBrushKey}" EndPoint="0,1" StartPoint="0,0">
+									<GradientStop Color="#FFEEEEEE" Offset="0"/>
+									<GradientStop Color="#FFDDDDDD" Offset="1"/>
+								</LinearGradientBrush>
+							</TreeView.Resources>
+						</TreeView>
+					</ctrl:CubeXStackPanel>
+				</GroupBox>
+
+				<!--Ограничения-->
+				<GroupBox Margin="2 8 2 2" ctrl:CubeXStackPanel.Fill="Auto">
+					<GroupBox.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Drawing/Fatcow_visiblemode_all_32.png"/>
+							<TextBlock  Margin="4 2 2 2" Text="Ограничения" Style="{StaticResource TextBlockHeaderStyleKey}" />
+						</StackPanel>
+					</GroupBox.Header>
+					<ListBox Margin="2" x:Name="listConstraint" MinHeight="40"
+							 ItemTemplateSelector="{StaticResource RepositoryDataConstraintSelectorKey}">
+					</ListBox>
+				</GroupBox>
+			</ctrl:CubeXStackPanel>
+
+			<GridSplitter Grid.Column="1"
+							ShowsPreview="False" 
+							Width="4"
+							HorizontalAlignment="Center" 
+							VerticalAlignment="Stretch"/>
+
+			<ctrl:CubeXStackPanel Grid.Column="2" Orientation="Vertical" >
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Margin="2" Text="Данные таблицы: " FontSize="14"/>
+					<TextBlock Margin="2" Style="{StaticResource TextBlockHeaderStyleKey}" Text="{Binding ElementName=windowRepository, Path=SelectedTable.DisplayExpression}"/>
+				</StackPanel>
+
+				<ctrl:CubeXStackPanel Orientation="Horizontal">
+
+					<!--Группирование-->
+					<GroupBox ctrl:CubeXStackPanel.Fill="Fill">
+						<GroupBox.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Table/Gloss_basic_table_32.png"/>
+								<TextBlock  Margin="4 2 2 2" Text="Группирование" Style="{StaticResource TextBlockHeaderStyleKey}" />
+							</StackPanel>
+						</GroupBox.Header>
+
+						<StackPanel Orientation="Horizontal">
+							<CheckBox x:Name="checkGroupColumn" Margin="2" FontSize="14" Content="Группировать по столбцу" VerticalAlignment="Center"/>
+							<ComboBox x:Name="comboGroupColumn" Margin="2" MinWidth="120">
+								<ComboBox.ItemTemplate>
+									<DataTemplate DataType="{x:Type data:DataColumn}">
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Text="{Binding Caption}"/>
+											<TextBlock FontWeight="Bold" Text="{Binding ColumnName, StringFormat=' [{0}]'}"/>
+										</StackPanel>
+									</DataTemplate>
+								</ComboBox.ItemTemplate>
+							</ComboBox>
+						</StackPanel>
+					</GroupBox>
+
+					<!--Поиск-->
+					<GroupBox ctrl:CubeXStackPanel.Fill="Fill">
+						<GroupBox.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Width="24" Height="24" Source="/CubeXWindows;component/Resources/Icons/Table/Gloss_basic_table_32.png"/>
+								<TextBlock  Margin="4 2 2 2" Text="Поиск и фильтрация" Style="{StaticResource TextBlockHeaderStyleKey}" />
+							</StackPanel>
+						</GroupBox.Header>
+						
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Margin="2" Text="Группировать по столбцу"/>
+							<ComboBox />
+						</StackPanel>
+
+					</GroupBox>
+				</ctrl:CubeXStackPanel>
+
+				<DataGrid Grid.Column="2" x:Name="dataTable" ctrl:CubeXStackPanel.Fill="Fill"
+							CanUserAddRows="False"
+							HorizontalGridLinesBrush="Orange"
+							VerticalGridLinesBrush="Orange"
+							AutoGeneratingColumn="OnDataTable_AutoGeneratingColumn"
+							AutoGeneratedColumns="OnDataTable_AutoGeneratedColumns">
+					<DataGrid.Resources>
+						
+					</DataGrid.Resources>
+					<DataGrid.GroupStyle>
+						<GroupStyle ContainerStyle="{StaticResource GroupExpanderHeaderStyleKey}"
+									HeaderTemplate="{StaticResource HeaderGroupDataGridTemplateKey}">
+						</GroupStyle>
+					</DataGrid.GroupStyle>
+				</DataGrid>
+
+				<GroupBox Header="Редактирование записи" Margin="4">
+					<StackPanel Orientation="Horizontal">
+						<Button Margin="4" Content="Добавить запись"/>
+						<Button Margin="4" Content="Удалить запись"/>
+						<TextBlock x:Name="textStatus" Text="1"/>
+					</StackPanel>
+				</GroupBox>
+
+
+			</ctrl:CubeXStackPanel>
+		</Grid>
+
+	</Grid>
+</Window>

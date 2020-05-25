@@ -1,0 +1,754 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>CubeX</RootNamespace>
+    <Authors>MagistrBYTE aka DanielDem</Authors>
+    <Company>CubeXPlatform</Company>
+    <Copyright>MagistrBYTE aka DanielDem</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\Output\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;USE_WINDOWS;USE_SQLITE;USE_EXCEL;USE_MYSQL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Output\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Themes\Infragistics\**" />
+    <EmbeddedResource Remove="Themes\Infragistics\**" />
+    <None Remove="Themes\Infragistics\**" />
+    <Page Remove="Themes\Infragistics\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Source\Basis\Algorithm\PathFinder\" />
+    <Folder Include="Source\Basis\Algorithm\Snap\" />
+    <Folder Include="Source\Basis\Core\Base\" />
+    <Folder Include="Source\Basis\Core\Collections\" />
+    <Folder Include="Source\Basis\Core\Converters\" />
+    <Folder Include="Source\Basis\Core\Extension\" />
+    <Folder Include="Source\Basis\Core\Inspector\Collection\" />
+    <Folder Include="Source\Basis\Core\Inspector\Condition\" />
+    <Folder Include="Source\Basis\Core\Inspector\Controls\" />
+    <Folder Include="Source\Basis\Core\Inspector\Decoration\" />
+    <Folder Include="Source\Basis\Core\Inspector\Desc\" />
+    <Folder Include="Source\Basis\Core\Inspector\Events\" />
+    <Folder Include="Source\Basis\Core\Inspector\LayoutGroup\" />
+    <Folder Include="Source\Basis\Core\Inspector\Methods\" />
+    <Folder Include="Source\Basis\Core\Inspector\Number\" />
+    <Folder Include="Source\Basis\Core\Inspector\Validation\" />
+    <Folder Include="Source\Basis\Core\Inspector\Value\" />
+    <Folder Include="Source\Basis\Core\Interfaces\" />
+    <Folder Include="Source\Basis\Core\Logger\" />
+    <Folder Include="Source\Basis\Core\Message\" />
+    <Folder Include="Source\Basis\Core\ObjectPool\" />
+    <Folder Include="Source\Basis\Core\Parameters\" />
+    <Folder Include="Source\Basis\Core\Protection\" />
+    <Folder Include="Source\Basis\Core\Reflection\" />
+    <Folder Include="Source\Basis\Core\Serialization\Serializator\" />
+    <Folder Include="Source\Basis\Core\ServiceOS\" />
+    <Folder Include="Source\Basis\Core\Task\" />
+    <Folder Include="Source\Basis\Core\Text\" />
+    <Folder Include="Source\Basis\Core\UnitMeasurement\Units\" />
+    <Folder Include="Source\Basis\Math\Common\" />
+    <Folder Include="Source\Basis\Math\Geometry2D\Primitive\" />
+    <Folder Include="Source\Basis\Math\Geometry3D\Primitive\" />
+    <Folder Include="Source\Basis\Math\Random\" />
+    <Folder Include="Source\Basis\Math\Spline\" />
+    <Folder Include="Source\Basis\Patterns\Command\" />
+    <Folder Include="Source\Basis\Patterns\Document\" />
+    <Folder Include="Source\Basis\Patterns\Grouping\" />
+    <Folder Include="Source\Basis\Patterns\Hierarchy\" />
+    <Folder Include="Source\Basis\Patterns\InteractionUI\" />
+    <Folder Include="Source\Basis\Patterns\Memento\" />
+    <Folder Include="Source\Basis\Patterns\Model\" />
+    <Folder Include="Source\Basis\Patterns\Present\" />
+    <Folder Include="Source\Basis\Patterns\Repository\Database\" />
+    <Folder Include="Source\Basis\Patterns\Repository\Excel\" />
+    <Folder Include="Source\Basis\Patterns\Repository\File\" />
+    <Folder Include="Source\Basis\Patterns\Scheme\" />
+    <Folder Include="Source\Basis\Patterns\TreeNode\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Brushes\brush_chess_large.png" />
+    <None Remove="Resources\Brushes\brush_chess_small.png" />
+    <None Remove="Resources\Brushes\brush_cross_large.png" />
+    <None Remove="Resources\Brushes\brush_diagonal135.png" />
+    <None Remove="Resources\Brushes\brush_diagonal45.png" />
+    <None Remove="Resources\Brushes\brush_horizontal.png" />
+    <None Remove="Resources\Brushes\brush_line_circle.png" />
+    <None Remove="Resources\Brushes\brush_vertical.png" />
+    <None Remove="Resources\Icons\3D\mod3d_1stperson_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_1view_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_2view_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_2view_hor_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_4view_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_boundbox_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_export_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_joints_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_load_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_material_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_material_256.png" />
+    <None Remove="Resources\Icons\3D\mod3d_mesh_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_normalview_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_normal_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_orbit_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_picking_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_root_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_settings_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_shading_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_skeletonview_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_texture_16.png" />
+    <None Remove="Resources\Icons\3D\mod3d_wireframe_16.png" />
+    <None Remove="Resources\Icons\Actions\Oxygen_arrow_down_22.png" />
+    <None Remove="Resources\Icons\Actions\Oxygen_arrow_up_22.png" />
+    <None Remove="Resources\Icons\Actions\Oxygen_list_add_32.png" />
+    <None Remove="Resources\Icons\Actions\Oxygen_list_remove_32.png" />
+    <None Remove="Resources\Icons\Actions\Oxygen_tab_duplicate_32.png" />
+    <None Remove="Resources\Icons\Actions\Oxygen_user_busy_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_add_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_connect_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_edit_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_error_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_gear_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_go_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_key_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_lightning_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_link_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_refresh_32.png" />
+    <None Remove="Resources\Icons\Database\Fatcow_database_save_32.png" />
+    <None Remove="Resources\Icons\Database\Pixelicious_key_32.png" />
+    <None Remove="Resources\Icons\Database\Pixelicious_key_info_32.png" />
+    <None Remove="Resources\Icons\Database\Pixelicious_key_notice_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_close_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_close_48.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_decrypt_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_edit_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_encrypt_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_export_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_export_table_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_import_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_new_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_new_48.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_open_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_open_48.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_preview_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_print_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_print_preview_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_properties_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_save_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_save_all_32.png" />
+    <None Remove="Resources\Icons\Document\Oxygen_document_save_as_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_halfmode_disable_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_halfmode_gray_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_halfmode_half_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_layers_map_16.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_layers_map_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_pencil_16.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_pencil_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_soil_layers_16.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_soil_layers_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_visiblemode_all_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_visiblemode_hidden_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_visiblemode_off_32.png" />
+    <None Remove="Resources\Icons\Drawing\Fatcow_visiblemode_on_32.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_draw_brush_16.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_draw_brush_32.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_fill_color_16.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_fill_color_32.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_layer_visible_off_16.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_layer_visible_off_32.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_layer_visible_on_16.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_layer_visible_on_32.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_stroke_join_miter_16.png" />
+    <None Remove="Resources\Icons\Drawing\Oxygen_stroke_join_miter_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_copy_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_cut_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_delete_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_find_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_paste_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_redo_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_rename_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_select_32.png" />
+    <None Remove="Resources\Icons\Edit\Oxygen_edit_undo_32.png" />
+    <None Remove="Resources\Icons\Folders\Fugue_folder_export_24.png" />
+    <None Remove="Resources\Icons\Folders\Fugue_folder_horizontal_24.png" />
+    <None Remove="Resources\Icons\Folders\Fugue_folder_horizontal_open_24.png" />
+    <None Remove="Resources\Icons\Folders\Fugue_folder_import_24.png" />
+    <None Remove="Resources\Icons\Folders\Fugue_folder_open_24.png" />
+    <None Remove="Resources\Icons\Invest\Invest_instrument_128.png" />
+    <None Remove="Resources\Icons\Invest\Invest_manager_128.png" />
+    <None Remove="Resources\Icons\Invest\Invest_portfolio_64.png" />
+    <None Remove="Resources\Icons\Invest\Invest_trade_add_32.png" />
+    <None Remove="Resources\Icons\Invest\Invest_trade_delete_32.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_action_log_16.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_action_log_32.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_document_properties_16.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_document_properties_32.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_file_extension_log_16.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_file_extension_log_32.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_folders_explorer_16.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_folders_explorer_32.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_folder_explore_16.png" />
+    <None Remove="Resources\Icons\Panels\Fatcow_folder_explore_32.png" />
+    <None Remove="Resources\Icons\Panels\NuoveXT_document_properties_16.png" />
+    <None Remove="Resources\Icons\Panels\NuoveXT_document_properties_32.png" />
+    <None Remove="Resources\Icons\Panels\Oxygen_image_x_generic_32.png" />
+    <None Remove="Resources\Icons\Panels\Oxygen_text_plain_32.png" />
+    <None Remove="Resources\Icons\Panels\Oxygen_utilities_log_viewer_16.png" />
+    <None Remove="Resources\Icons\Panels\Oxygen_utilities_log_viewer_32.png" />
+    <None Remove="Resources\Icons\Project\Oxygen_project_48.png" />
+    <None Remove="Resources\Icons\Project\Oxygen_project_close_48.png" />
+    <None Remove="Resources\Icons\Project\Oxygen_project_close_all_48.png" />
+    <None Remove="Resources\Icons\Project\Oxygen_project_new_48.png" />
+    <None Remove="Resources\Icons\Project\Oxygen_project_open_48.png" />
+    <None Remove="Resources\Icons\Status\Gloss_basic_bullet_brown_32.png" />
+    <None Remove="Resources\Icons\Status\Gloss_basic_bullet_green_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_applications_system_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_application_exit_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_dialog_error_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_dialog_information_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_dialog_password_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_dialog_warning_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_security_high_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_security_low_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_security_medium_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_accepted_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_attempt_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_attention_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_complete_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_delegate_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_ongoing_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_recurring_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_task_reminder_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_user_away_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_user_away_extended_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_user_busy_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_user_offline_32.png" />
+    <None Remove="Resources\Icons\Status\Oxygen_user_online_32.png" />
+    <None Remove="Resources\Icons\Table\Fatcow_border_2_bottom_32.png" />
+    <None Remove="Resources\Icons\Table\Fatcow_border_2_left_32.png" />
+    <None Remove="Resources\Icons\Table\Fatcow_border_2_outer_32.png" />
+    <None Remove="Resources\Icons\Table\Fatcow_border_2_right_32.png" />
+    <None Remove="Resources\Icons\Table\Fatcow_border_2_top_32.png" />
+    <None Remove="Resources\Icons\Table\Gloss_basic_table_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_align_above_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_align_bellow_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_align_compact_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_align_middle_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_text_align_center_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_text_align_justity_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_text_align_left_32.png" />
+    <None Remove="Resources\Icons\Text\Fatcow_text_align_right_32.png" />
+    <None Remove="Resources\Icons\UI\Fatcow_data_sort_24.png" />
+    <None Remove="Resources\Icons\UI\Fatcow_sort_columns_24.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_close_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_form_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_left_close_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_list_details_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_list_icons_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_list_text_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_multiple_objects_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_refresh_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_restore_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_right_close_32.png" />
+    <None Remove="Resources\Icons\View\Oxygen_view_right_new_32.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\CubeXAlgorithmExtension.cs" Link="Source\Basis\Algorithm\CubeXAlgorithmExtension.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\CubeXAlgorithmKnapsack.cs" Link="Source\Basis\Algorithm\CubeXAlgorithmKnapsack.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\CubeXAlgorithmPrimeHelper.cs" Link="Source\Basis\Algorithm\CubeXAlgorithmPrimeHelper.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderAStar.cs" Link="Source\Basis\Algorithm\PathFinder\CubeXAlgorithmPathFinderAStar.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderCommon.cs" Link="Source\Basis\Algorithm\PathFinder\CubeXAlgorithmPathFinderCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderMap.cs" Link="Source\Basis\Algorithm\PathFinder\CubeXAlgorithmPathFinderMap.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderWave.cs" Link="Source\Basis\Algorithm\PathFinder\CubeXAlgorithmPathFinderWave.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\Snap\CubeXAlgorithmSnapPoint2D.cs" Link="Source\Basis\Algorithm\Snap\CubeXAlgorithmSnapPoint2D.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseArray.cs" Link="Source\Basis\Core\Base\CubeXBaseArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseColor.cs" Link="Source\Basis\Core\Base\CubeXBaseColor.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDataBinding.cs" Link="Source\Basis\Core\Base\CubeXBaseDataBinding.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDateTime.cs" Link="Source\Basis\Core\Base\CubeXBaseDateTime.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDimension.cs" Link="Source\Basis\Core\Base\CubeXBaseDimension.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDirections.cs" Link="Source\Basis\Core\Base\CubeXBaseDirections.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDisposer.cs" Link="Source\Basis\Core\Base\CubeXBaseDisposer.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseEnum.cs" Link="Source\Basis\Core\Base\CubeXBaseEnum.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseFileSystem.cs" Link="Source\Basis\Core\Base\CubeXBaseFileSystem.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseIdentifier.cs" Link="Source\Basis\Core\Base\CubeXBaseIdentifier.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseIndexedValues.cs" Link="Source\Basis\Core\Base\CubeXBaseIndexedValues.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseInput.cs" Link="Source\Basis\Core\Base\CubeXBaseInput.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseNumbers.cs" Link="Source\Basis\Core\Base\CubeXBaseNumbers.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseObject.cs" Link="Source\Basis\Core\Base\CubeXBaseObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseObservedValues.cs" Link="Source\Basis\Core\Base\CubeXBaseObservedValues.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseOperators.cs" Link="Source\Basis\Core\Base\CubeXBaseOperators.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBasePacked.cs" Link="Source\Basis\Core\Base\CubeXBasePacked.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseSettings.cs" Link="Source\Basis\Core\Base\CubeXBaseSettings.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseString.cs" Link="Source\Basis\Core\Base\CubeXBaseString.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseSurfaceData.cs" Link="Source\Basis\Core\Base\CubeXBaseSurfaceData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseVariant.cs" Link="Source\Basis\Core\Base\CubeXBaseVariant.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionDequeArray.cs" Link="Source\Basis\Core\Collections\CubeXCollectionDequeArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionDictionaryList.cs" Link="Source\Basis\Core\Collections\CubeXCollectionDictionaryList.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionListArray.cs" Link="Source\Basis\Core\Collections\CubeXCollectionListArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionListSelectedArray.cs" Link="Source\Basis\Core\Collections\CubeXCollectionListSelectedArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionPriorityQueue.cs" Link="Source\Basis\Core\Collections\CubeXCollectionPriorityQueue.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionQueueArray.cs" Link="Source\Basis\Core\Collections\CubeXCollectionQueueArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionStackArray.cs" Link="Source\Basis\Core\Collections\CubeXCollectionStackArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Converters\CubeXConverterBase.cs" Link="Source\Basis\Core\Converters\CubeXConverterBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Converters\CubeXConverterCollections.cs" Link="Source\Basis\Core\Converters\CubeXConverterCollections.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Converters\CubeXConverterStream.cs" Link="Source\Basis\Core\Converters\CubeXConverterStream.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionCollections.cs" Link="Source\Basis\Core\Extension\CubeXExtensionCollections.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionDateTime.cs" Link="Source\Basis\Core\Extension\CubeXExtensionDateTime.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionDelegate.cs" Link="Source\Basis\Core\Extension\CubeXExtensionDelegate.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionEnum.cs" Link="Source\Basis\Core\Extension\CubeXExtensionEnum.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionNumbers.cs" Link="Source\Basis\Core\Extension\CubeXExtensionNumbers.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionObject.cs" Link="Source\Basis\Core\Extension\CubeXExtensionObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionReflection.cs" Link="Source\Basis\Core\Extension\CubeXExtensionReflection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionStream.cs" Link="Source\Basis\Core\Extension\CubeXExtensionStream.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionString.cs" Link="Source\Basis\Core\Extension\CubeXExtensionString.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionXml.cs" Link="Source\Basis\Core\Extension\CubeXExtensionXml.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Collection\CubeXInspectorCollectionColumn.cs" Link="Source\Basis\Core\Inspector\Collection\CubeXInspectorCollectionColumn.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Collection\CubeXInspectorCollectionInLine.cs" Link="Source\Basis\Core\Inspector\Collection\CubeXInspectorCollectionInLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Collection\CubeXInspectorCollectionReorderable.cs" Link="Source\Basis\Core\Inspector\Collection\CubeXInspectorCollectionReorderable.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Condition\CubeXInspectorConditionEnabled.cs" Link="Source\Basis\Core\Inspector\Condition\CubeXInspectorConditionEnabled.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Condition\CubeXInspectorConditionVisible.cs" Link="Source\Basis\Core\Inspector\Condition\CubeXInspectorConditionVisible.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlButton.cs" Link="Source\Basis\Core\Inspector\Controls\CubeXInspectorControlButton.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlEnumButton.cs" Link="Source\Basis\Core\Inspector\Controls\CubeXInspectorControlEnumButton.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlEnumFlagsButton.cs" Link="Source\Basis\Core\Inspector\Controls\CubeXInspectorControlEnumFlagsButton.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlPreview.cs" Link="Source\Basis\Core\Inspector\Controls\CubeXInspectorControlPreview.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorAttributesBase.cs" Link="Source\Basis\Core\Inspector\CubeXInspectorAttributesBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorInterface.cs" Link="Source\Basis\Core\Inspector\CubeXInspectorInterface.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorPropertyDesc.cs" Link="Source\Basis\Core\Inspector\CubeXInspectorPropertyDesc.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorSupport.cs" Link="Source\Basis\Core\Inspector\CubeXInspectorSupport.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationBackground.cs" Link="Source\Basis\Core\Inspector\Decoration\CubeXInspectorDecorationBackground.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationBoxing.cs" Link="Source\Basis\Core\Inspector\Decoration\CubeXInspectorDecorationBoxing.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationForeground.cs" Link="Source\Basis\Core\Inspector\Decoration\CubeXInspectorDecorationForeground.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationIndent.cs" Link="Source\Basis\Core\Inspector\Decoration\CubeXInspectorDecorationIndent.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescAbbreviation.cs" Link="Source\Basis\Core\Inspector\Desc\CubeXInspectorDescAbbreviation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescCategory.cs" Link="Source\Basis\Core\Inspector\Desc\CubeXInspectorDescCategory.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescCategoryOrder.cs" Link="Source\Basis\Core\Inspector\Desc\CubeXInspectorDescCategoryOrder.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescDescriptionType.cs" Link="Source\Basis\Core\Inspector\Desc\CubeXInspectorDescDescriptionType.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescDisplayName.cs" Link="Source\Basis\Core\Inspector\Desc\CubeXInspectorDescDisplayName.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescPropertyOrder.cs" Link="Source\Basis\Core\Inspector\Desc\CubeXInspectorDescPropertyOrder.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescShortName.cs" Link="Source\Basis\Core\Inspector\Desc\CubeXInspectorDescShortName.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Events\CubeXInspectorEventValueChanged.cs" Link="Source\Basis\Core\Inspector\Events\CubeXInspectorEventValueChanged.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupGrouping.cs" Link="Source\Basis\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupGrouping.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupInGroup.cs" Link="Source\Basis\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupInGroup.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Methods\CubeXInspectorMethodArgFile.cs" Link="Source\Basis\Core\Inspector\Methods\CubeXInspectorMethodArgFile.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Methods\CubeXInspectorMethodCall.cs" Link="Source\Basis\Core\Inspector\Methods\CubeXInspectorMethodCall.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberFormat.cs" Link="Source\Basis\Core\Inspector\Number\CubeXInspectorNumberFormat.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberMax.cs" Link="Source\Basis\Core\Inspector\Number\CubeXInspectorNumberMax.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberMin.cs" Link="Source\Basis\Core\Inspector\Number\CubeXInspectorNumberMin.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberRandom.cs" Link="Source\Basis\Core\Inspector\Number\CubeXInspectorNumberRandom.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberRange.cs" Link="Source\Basis\Core\Inspector\Number\CubeXInspectorNumberRange.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberStep.cs" Link="Source\Basis\Core\Inspector\Number\CubeXInspectorNumberStep.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Validation\CubeXInspectorValidation.cs" Link="Source\Basis\Core\Inspector\Validation\CubeXInspectorValidation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueBase.cs" Link="Source\Basis\Core\Inspector\Value\CubeXInspectorValueBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueDefault.cs" Link="Source\Basis\Core\Inspector\Value\CubeXInspectorValueDefault.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueIndex.cs" Link="Source\Basis\Core\Inspector\Value\CubeXInspectorValueIndex.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueList.cs" Link="Source\Basis\Core\Inspector\Value\CubeXInspectorValueList.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXInterfaceCalculation.cs" Link="Source\Basis\Core\Interfaces\CubeXInterfaceCalculation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXInterfaceData.cs" Link="Source\Basis\Core\Interfaces\CubeXInterfaceData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXnterfaceIdentifier.cs" Link="Source\Basis\Core\Interfaces\CubeXnterfaceIdentifier.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXnterfaceSystem.cs" Link="Source\Basis\Core\Interfaces\CubeXnterfaceSystem.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Logger\CubeXLoggerCommon.cs" Link="Source\Basis\Core\Logger\CubeXLoggerCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Logger\CubeXLoggerDispatcher.cs" Link="Source\Basis\Core\Logger\CubeXLoggerDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Logger\CubeXLoggerView.cs" Link="Source\Basis\Core\Logger\CubeXLoggerView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Message\CubeXMessageCommon.cs" Link="Source\Basis\Core\Message\CubeXMessageCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Message\CubeXMessageDispatcher.cs" Link="Source\Basis\Core\Message\CubeXMessageDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ObjectPool\CubeXObjectPoolCommon.cs" Link="Source\Basis\Core\ObjectPool\CubeXObjectPoolCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ObjectPool\CubeXObjectPoolDispatcher.cs" Link="Source\Basis\Core\ObjectPool\CubeXObjectPoolDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ObjectPool\CubeXObjectPoolInteface.cs" Link="Source\Basis\Core\ObjectPool\CubeXObjectPoolInteface.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Parameters\CubeXParameterItem.cs" Link="Source\Basis\Core\Parameters\CubeXParameterItem.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Parameters\CubeXParameterObject.cs" Link="Source\Basis\Core\Parameters\CubeXParameterObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Parameters\CubeXParameterPrimitive.cs" Link="Source\Basis\Core\Parameters\CubeXParameterPrimitive.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Protection\CubeXProtectionInt.cs" Link="Source\Basis\Core\Protection\CubeXProtectionInt.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Protection\CubeXProtectionLong.cs" Link="Source\Basis\Core\Protection\CubeXProtectionLong.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Protection\CubeXProtectionSingle.cs" Link="Source\Basis\Core\Protection\CubeXProtectionSingle.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Reflection\CubeXReflectionCommon.cs" Link="Source\Basis\Core\Reflection\CubeXReflectionCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Reflection\CubeXReflectionDispatcher.cs" Link="Source\Basis\Core\Reflection\CubeXReflectionDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Reflection\CubeXReflectionType.cs" Link="Source\Basis\Core\Reflection\CubeXReflectionType.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationAttributes.cs" Link="Source\Basis\Core\Serialization\CubeXSerializationAttributes.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationBase.cs" Link="Source\Basis\Core\Serialization\CubeXSerializationBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationData.cs" Link="Source\Basis\Core\Serialization\CubeXSerializationData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationDispatcher.cs" Link="Source\Basis\Core\Serialization\CubeXSerializationDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationMember.cs" Link="Source\Basis\Core\Serialization\CubeXSerializationMember.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorCollection.cs" Link="Source\Basis\Core\Serialization\Serializator\CubeXSerializatorCollection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorCollectionModel.cs" Link="Source\Basis\Core\Serialization\Serializator\CubeXSerializatorCollectionModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorDictionary.cs" Link="Source\Basis\Core\Serialization\Serializator\CubeXSerializatorDictionary.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorObject.cs" Link="Source\Basis\Core\Serialization\Serializator\CubeXSerializatorObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorPrimitive.cs" Link="Source\Basis\Core\Serialization\Serializator\CubeXSerializatorPrimitive.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ServiceOS\CubeXBaseServiceBackgroundWorker.cs" Link="Source\Basis\Core\ServiceOS\CubeXBaseServiceBackgroundWorker.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ServiceOS\CubeXBaseServiceFileDialogs.cs" Link="Source\Basis\Core\ServiceOS\CubeXBaseServiceFileDialogs.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Task\CubeXTaskCommon.cs" Link="Source\Basis\Core\Task\CubeXTaskCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Task\CubeXTaskDispatcher.cs" Link="Source\Basis\Core\Task\CubeXTaskDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextBase.cs" Link="Source\Basis\Core\Text\CubeXTextBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextGenerateCodeBase.cs" Link="Source\Basis\Core\Text\CubeXTextGenerateCodeBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextGenerateCodeCSharp.cs" Link="Source\Basis\Core\Text\CubeXTextGenerateCodeCSharp.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextLine.cs" Link="Source\Basis\Core\Text\CubeXTextLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextList.cs" Link="Source\Basis\Core\Text\CubeXTextList.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\CubeXUnitMeasurementCommon.cs" Link="Source\Basis\Core\UnitMeasurement\CubeXUnitMeasurementCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\CubeXUnitMeasurementType.cs" Link="Source\Basis\Core\UnitMeasurement\CubeXUnitMeasurementType.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\CubeXUnitMeasurementUnits.cs" Link="Source\Basis\Core\UnitMeasurement\CubeXUnitMeasurementUnits.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitArea.cs" Link="Source\Basis\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitArea.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitLength.cs" Link="Source\Basis\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitLength.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitThing.cs" Link="Source\Basis\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitThing.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonAngle.cs" Link="Source\Basis\Math\Common\CubeXMathCommonAngle.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonEasing.cs" Link="Source\Basis\Math\Common\CubeXMathCommonEasing.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonFast.cs" Link="Source\Basis\Math\Common\CubeXMathCommonFast.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonInterpolation.cs" Link="Source\Basis\Math\Common\CubeXMathCommonInterpolation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonStream.cs" Link="Source\Basis\Math\Common\CubeXMathCommonStream.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonXml.cs" Link="Source\Basis\Math\Common\CubeXMathCommonXml.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\CubeXMathEx.cs" Link="Source\Basis\Math\CubeXMathEx.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2D.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2D.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DClosest.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DClosest.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DDistance.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DDistance.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DIntersect.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DIntersect.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DMatrix2x2.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DMatrix2x2.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DMatrix3x2.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DMatrix3x2.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DRect.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DRect.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DSize.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DSize.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DVector2.cs" Link="Source\Basis\Math\Geometry2D\CubeXGeometry2DVector2.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DCircle.cs" Link="Source\Basis\Math\Geometry2D\Primitive\CubeXGeometry2DCircle.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DLine.cs" Link="Source\Basis\Math\Geometry2D\Primitive\CubeXGeometry2DLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DRay.cs" Link="Source\Basis\Math\Geometry2D\Primitive\CubeXGeometry2DRay.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DSegment.cs" Link="Source\Basis\Math\Geometry2D\Primitive\CubeXGeometry2DSegment.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3D.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3D.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DClosest.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DClosest.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DDistance.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DDistance.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DIntersect.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DIntersect.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DMatrix3x3.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DMatrix3x3.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DMatrix4x4.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DMatrix4x4.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DQuaternion.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DQuaternion.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DTransform.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DTransform.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DVector3.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DVector3.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DVector4.cs" Link="Source\Basis\Math\Geometry3D\CubeXGeometry3DVector4.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DLine.cs" Link="Source\Basis\Math\Geometry3D\Primitive\CubeXGeometry3DLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DPlane.cs" Link="Source\Basis\Math\Geometry3D\Primitive\CubeXGeometry3DPlane.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DRay.cs" Link="Source\Basis\Math\Geometry3D\Primitive\CubeXGeometry3DRay.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DSegment.cs" Link="Source\Basis\Math\Geometry3D\Primitive\CubeXGeometry3DSegment.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DSphere.cs" Link="Source\Basis\Math\Geometry3D\Primitive\CubeXGeometry3DSphere.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomCommon.cs" Link="Source\Basis\Math\Random\CubeXMathRandomCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomGenerators.cs" Link="Source\Basis\Math\Random\CubeXMathRandomGenerators.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomGuarantee.cs" Link="Source\Basis\Math\Random\CubeXMathRandomGuarantee.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomNoise.cs" Link="Source\Basis\Math\Random\CubeXMathRandomNoise.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Command\CubeXPatternCommand.cs" Link="Source\Basis\Patterns\Command\CubeXPatternCommand.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\CubeXPatternState.cs" Link="Source\Basis\Patterns\CubeXPatternState.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocument.cs" Link="Source\Basis\Patterns\Document\CubeXPatternDocument.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentCollection.cs" Link="Source\Basis\Patterns\Document\CubeXPatternDocumentCollection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentCollectionView.cs" Link="Source\Basis\Patterns\Document\CubeXPatternDocumentCollectionView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentHierarchy.cs" Link="Source\Basis\Patterns\Document\CubeXPatternDocumentHierarchy.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentHierarchyView.cs" Link="Source\Basis\Patterns\Document\CubeXPatternDocumentHierarchyView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Grouping\CubeXPatternGroupingCommon.cs" Link="Source\Basis\Patterns\Grouping\CubeXPatternGroupingCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModel.cs" Link="Source\Basis\Patterns\Hierarchy\CubeXPatternHierarchyModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelBegin.cs" Link="Source\Basis\Patterns\Hierarchy\CubeXPatternHierarchyModelBegin.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelLast.cs" Link="Source\Basis\Patterns\Hierarchy\CubeXPatternHierarchyModelLast.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelView.cs" Link="Source\Basis\Patterns\Hierarchy\CubeXPatternHierarchyModelView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelViewBegin.cs" Link="Source\Basis\Patterns\Hierarchy\CubeXPatternHierarchyModelViewBegin.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelViewLast.cs" Link="Source\Basis\Patterns\Hierarchy\CubeXPatternHierarchyModelViewLast.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUICollection.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUICollection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUICollectionView.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUICollectionView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIContextMenu.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUIContextMenu.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIExploreModel.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUIExploreModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchy.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchy.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchyView.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchyView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIRepository.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUIRepository.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIStaticData.cs" Link="Source\Basis\Patterns\InteractionUI\CubeXPatternInteractionUIStaticData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Memento\CubeXPatternMemento.cs" Link="Source\Basis\Patterns\Memento\CubeXPatternMemento.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Memento\CubeXPatternMementoModel.cs" Link="Source\Basis\Patterns\Memento\CubeXPatternMementoModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternCollectionModel.cs" Link="Source\Basis\Patterns\Model\CubeXPatternCollectionModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternCollectionModelView.cs" Link="Source\Basis\Patterns\Model\CubeXPatternCollectionModelView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternModel.cs" Link="Source\Basis\Patterns\Model\CubeXPatternModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternModelOwned.cs" Link="Source\Basis\Patterns\Model\CubeXPatternModelOwned.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternModelView.cs" Link="Source\Basis\Patterns\Model\CubeXPatternModelView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Present\CubeXPatternPresentCommon.cs" Link="Source\Basis\Patterns\Present\CubeXPatternPresentCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepository.cs" Link="Source\Basis\Patterns\Repository\CubeXPatternRepository.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryAttributes.cs" Link="Source\Basis\Patterns\Repository\CubeXPatternRepositoryAttributes.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryDispatcher.cs" Link="Source\Basis\Patterns\Repository\CubeXPatternRepositoryDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryExtensionData.cs" Link="Source\Basis\Patterns\Repository\CubeXPatternRepositoryExtensionData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryQuery.cs" Link="Source\Basis\Patterns\Repository\CubeXPatternRepositoryQuery.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryStatic.cs" Link="Source\Basis\Patterns\Repository\CubeXPatternRepositoryStatic.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Database\CubeXPatternRepositoryDatabase.cs" Link="Source\Basis\Patterns\Repository\Database\CubeXPatternRepositoryDatabase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseMySQL.cs" Link="Source\Basis\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseMySQL.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseSQLite.cs" Link="Source\Basis\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseSQLite.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Excel\CubeXPatternRepositoryExcel.cs" Link="Source\Basis\Patterns\Repository\Excel\CubeXPatternRepositoryExcel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\File\CubeXPatternRepositoryFile.cs" Link="Source\Basis\Patterns\Repository\File\CubeXPatternRepositoryFile.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\File\CubeXPatternRepositoryFilePrimitive.cs" Link="Source\Basis\Patterns\Repository\File\CubeXPatternRepositoryFilePrimitive.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\File\CubeXPatternRepositoryFileRecord.cs" Link="Source\Basis\Patterns\Repository\File\CubeXPatternRepositoryFileRecord.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Scheme\CubeXPatternSchemeCommon.cs" Link="Source\Basis\Patterns\Scheme\CubeXPatternSchemeCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Scheme\CubeXPatternSchemeFlat.cs" Link="Source\Basis\Patterns\Scheme\CubeXPatternSchemeFlat.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\TreeNode\CubeXPatternTreeNode.cs" Link="Source\Basis\Patterns\TreeNode\CubeXPatternTreeNode.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\TreeNode\CubeXPatternTreeNodeView.cs" Link="Source\Basis\Patterns\TreeNode\CubeXPatternTreeNodeView.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="4.6.82" />
+    <PackageReference Include="DotNetProjects.WpfToolkit.Themes" Version="6.0.79" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.19" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0-preview.1.20120.5" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Themes\Infragistics\IG\IG.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\IG\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\IG\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\IG\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\MetroDark\MetroDark.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\MetroDark\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\MetroDark\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\MetroDark\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Metro\Metro.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Metro\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Metro\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Metro\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2010Blue\Office2010Blue.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2010Blue\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2010Blue\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2010Blue\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2013\Office2013.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2013\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2013\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Infragistics\Office2013\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Brushes\brush_chess_large.png" />
+    <Resource Include="Resources\Brushes\brush_chess_small.png" />
+    <Resource Include="Resources\Brushes\brush_cross_large.png" />
+    <Resource Include="Resources\Brushes\brush_diagonal135.png" />
+    <Resource Include="Resources\Brushes\brush_diagonal45.png" />
+    <Resource Include="Resources\Brushes\brush_horizontal.png" />
+    <Resource Include="Resources\Brushes\brush_line_circle.png" />
+    <Resource Include="Resources\Brushes\brush_vertical.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_1stperson_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_1view_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_2view_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_2view_hor_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_4view_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_boundbox_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_export_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_joints_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_load_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_material_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_material_256.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_mesh_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_normalview_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_normal_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_orbit_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_picking_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_root_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_settings_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_shading_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_skeletonview_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_texture_16.png" />
+    <Resource Include="Resources\Icons\3D\mod3d_wireframe_16.png" />
+    <Resource Include="Resources\Icons\Actions\Oxygen_arrow_down_22.png" />
+    <Resource Include="Resources\Icons\Actions\Oxygen_arrow_up_22.png" />
+    <Resource Include="Resources\Icons\Actions\Oxygen_list_add_32.png" />
+    <Resource Include="Resources\Icons\Actions\Oxygen_list_remove_32.png" />
+    <Resource Include="Resources\Icons\Actions\Oxygen_tab_duplicate_32.png" />
+    <Resource Include="Resources\Icons\Actions\Oxygen_user_busy_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_add_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_connect_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_edit_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_error_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_gear_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_go_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_key_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_lightning_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_link_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_refresh_32.png" />
+    <Resource Include="Resources\Icons\Database\Fatcow_database_save_32.png" />
+    <Resource Include="Resources\Icons\Database\Pixelicious_key_32.png" />
+    <Resource Include="Resources\Icons\Database\Pixelicious_key_info_32.png" />
+    <Resource Include="Resources\Icons\Database\Pixelicious_key_notice_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_close_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_close_48.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_decrypt_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_edit_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_encrypt_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_export_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_export_table_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_import_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_new_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_new_48.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_open_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_open_48.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_preview_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_print_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_print_preview_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_properties_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_save_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_save_all_32.png" />
+    <Resource Include="Resources\Icons\Document\Oxygen_document_save_as_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_halfmode_disable_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_halfmode_gray_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_halfmode_half_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_layers_map_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_layers_map_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_pencil_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_pencil_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_soil_layers_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_soil_layers_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_visiblemode_all_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_visiblemode_hidden_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_visiblemode_off_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Fatcow_visiblemode_on_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_draw_brush_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_draw_brush_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_fill_color_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_fill_color_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_layer_visible_off_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_layer_visible_off_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_layer_visible_on_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_layer_visible_on_32.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_stroke_join_miter_16.png" />
+    <Resource Include="Resources\Icons\Drawing\Oxygen_stroke_join_miter_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_copy_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_cut_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_delete_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_find_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_paste_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_redo_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_rename_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_select_32.png" />
+    <Resource Include="Resources\Icons\Edit\Oxygen_edit_undo_32.png" />
+    <Resource Include="Resources\Icons\Folders\Fugue_folder_export_24.png" />
+    <Resource Include="Resources\Icons\Folders\Fugue_folder_horizontal_24.png" />
+    <Resource Include="Resources\Icons\Folders\Fugue_folder_horizontal_open_24.png" />
+    <Resource Include="Resources\Icons\Folders\Fugue_folder_import_24.png" />
+    <Resource Include="Resources\Icons\Folders\Fugue_folder_open_24.png" />
+    <Resource Include="Resources\Icons\Invest\Invest_instrument_128.png" />
+    <Resource Include="Resources\Icons\Invest\Invest_manager_128.png" />
+    <Resource Include="Resources\Icons\Invest\Invest_portfolio_64.png" />
+    <Resource Include="Resources\Icons\Invest\Invest_trade_add_32.png" />
+    <Resource Include="Resources\Icons\Invest\Invest_trade_delete_32.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_action_log_16.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_action_log_32.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_document_properties_16.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_document_properties_32.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_file_extension_log_16.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_file_extension_log_32.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_folders_explorer_16.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_folders_explorer_32.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_folder_explore_16.png" />
+    <Resource Include="Resources\Icons\Panels\Fatcow_folder_explore_32.png" />
+    <Resource Include="Resources\Icons\Panels\NuoveXT_document_properties_16.png" />
+    <Resource Include="Resources\Icons\Panels\NuoveXT_document_properties_32.png" />
+    <Resource Include="Resources\Icons\Panels\Oxygen_image_x_generic_32.png" />
+    <Resource Include="Resources\Icons\Panels\Oxygen_text_plain_32.png" />
+    <Resource Include="Resources\Icons\Panels\Oxygen_utilities_log_viewer_16.png" />
+    <Resource Include="Resources\Icons\Panels\Oxygen_utilities_log_viewer_32.png" />
+    <Resource Include="Resources\Icons\Project\Oxygen_project_48.png" />
+    <Resource Include="Resources\Icons\Project\Oxygen_project_close_48.png" />
+    <Resource Include="Resources\Icons\Project\Oxygen_project_close_all_48.png" />
+    <Resource Include="Resources\Icons\Project\Oxygen_project_new_48.png" />
+    <Resource Include="Resources\Icons\Project\Oxygen_project_open_48.png" />
+    <Resource Include="Resources\Icons\Status\Gloss_basic_bullet_brown_32.png" />
+    <Resource Include="Resources\Icons\Status\Gloss_basic_bullet_green_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_applications_system_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_application_exit_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_dialog_error_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_dialog_information_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_dialog_password_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_dialog_warning_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_security_high_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_security_low_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_security_medium_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_accepted_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_attempt_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_attention_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_complete_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_delegate_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_ongoing_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_recurring_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_task_reminder_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_user_away_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_user_away_extended_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_user_busy_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_user_offline_32.png" />
+    <Resource Include="Resources\Icons\Status\Oxygen_user_online_32.png" />
+    <Resource Include="Resources\Icons\Table\Fatcow_border_2_bottom_32.png" />
+    <Resource Include="Resources\Icons\Table\Fatcow_border_2_left_32.png" />
+    <Resource Include="Resources\Icons\Table\Fatcow_border_2_outer_32.png" />
+    <Resource Include="Resources\Icons\Table\Fatcow_border_2_right_32.png" />
+    <Resource Include="Resources\Icons\Table\Fatcow_border_2_top_32.png" />
+    <Resource Include="Resources\Icons\Table\Gloss_basic_table_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_align_above_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_align_bellow_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_align_compact_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_align_middle_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_text_align_center_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_text_align_justity_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_text_align_left_32.png" />
+    <Resource Include="Resources\Icons\Text\Fatcow_text_align_right_32.png" />
+    <Resource Include="Resources\Icons\UI\Fatcow_data_sort_24.png" />
+    <Resource Include="Resources\Icons\UI\Fatcow_sort_columns_24.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_close_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_form_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_left_close_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_list_details_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_list_icons_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_list_text_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_multiple_objects_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_refresh_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_restore_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_right_close_32.png" />
+    <Resource Include="Resources\Icons\View\Oxygen_view_right_new_32.png" />
+  </ItemGroup>
+
+</Project>

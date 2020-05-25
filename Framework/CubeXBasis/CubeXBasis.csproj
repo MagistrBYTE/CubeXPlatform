@@ -1,0 +1,307 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>CubeX</RootNamespace>
+    <Authors>MagistrBYTE aka DanielDem</Authors>
+    <Company>CubeXPlatform</Company>
+    <Copyright>MagistrBYTE aka DanielDem</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\Output\Debug\</OutputPath>
+    <DefineConstants>TRACE;USE_GDI;USE_MYSQL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Output\Release\</OutputPath>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\CubeXAlgorithmExtension.cs" Link="Source\Algorithm\CubeXAlgorithmExtension.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\CubeXAlgorithmKnapsack.cs" Link="Source\Algorithm\CubeXAlgorithmKnapsack.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\CubeXAlgorithmPrimeHelper.cs" Link="Source\Algorithm\CubeXAlgorithmPrimeHelper.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderAStar.cs" Link="Source\Algorithm\PathFinder\CubeXAlgorithmPathFinderAStar.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderCommon.cs" Link="Source\Algorithm\PathFinder\CubeXAlgorithmPathFinderCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderMap.cs" Link="Source\Algorithm\PathFinder\CubeXAlgorithmPathFinderMap.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\PathFinder\CubeXAlgorithmPathFinderWave.cs" Link="Source\Algorithm\PathFinder\CubeXAlgorithmPathFinderWave.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Algorithm\Snap\CubeXAlgorithmSnapPoint2D.cs" Link="Source\Algorithm\Snap\CubeXAlgorithmSnapPoint2D.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseArray.cs" Link="Source\Core\Base\CubeXBaseArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseColor.cs" Link="Source\Core\Base\CubeXBaseColor.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDataBinding.cs" Link="Source\Core\Base\CubeXBaseDataBinding.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDateTime.cs" Link="Source\Core\Base\CubeXBaseDateTime.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDimension.cs" Link="Source\Core\Base\CubeXBaseDimension.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDirections.cs" Link="Source\Core\Base\CubeXBaseDirections.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseDisposer.cs" Link="Source\Core\Base\CubeXBaseDisposer.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseEnum.cs" Link="Source\Core\Base\CubeXBaseEnum.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseFileSystem.cs" Link="Source\Core\Base\CubeXBaseFileSystem.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseIdentifier.cs" Link="Source\Core\Base\CubeXBaseIdentifier.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseIndexedValues.cs" Link="Source\Core\Base\CubeXBaseIndexedValues.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseInput.cs" Link="Source\Core\Base\CubeXBaseInput.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseNumbers.cs" Link="Source\Core\Base\CubeXBaseNumbers.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseObject.cs" Link="Source\Core\Base\CubeXBaseObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseObservedValues.cs" Link="Source\Core\Base\CubeXBaseObservedValues.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseOperators.cs" Link="Source\Core\Base\CubeXBaseOperators.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBasePacked.cs" Link="Source\Core\Base\CubeXBasePacked.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseSettings.cs" Link="Source\Core\Base\CubeXBaseSettings.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseString.cs" Link="Source\Core\Base\CubeXBaseString.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseSurfaceData.cs" Link="Source\Core\Base\CubeXBaseSurfaceData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Base\CubeXBaseVariant.cs" Link="Source\Core\Base\CubeXBaseVariant.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionDequeArray.cs" Link="Source\Core\Collections\CubeXCollectionDequeArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionDictionaryList.cs" Link="Source\Core\Collections\CubeXCollectionDictionaryList.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionListArray.cs" Link="Source\Core\Collections\CubeXCollectionListArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionListSelectedArray.cs" Link="Source\Core\Collections\CubeXCollectionListSelectedArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionPriorityQueue.cs" Link="Source\Core\Collections\CubeXCollectionPriorityQueue.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionQueueArray.cs" Link="Source\Core\Collections\CubeXCollectionQueueArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Collections\CubeXCollectionStackArray.cs" Link="Source\Core\Collections\CubeXCollectionStackArray.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Converters\CubeXConverterBase.cs" Link="Source\Core\Converters\CubeXConverterBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Converters\CubeXConverterCollections.cs" Link="Source\Core\Converters\CubeXConverterCollections.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Converters\CubeXConverterStream.cs" Link="Source\Core\Converters\CubeXConverterStream.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionCollections.cs" Link="Source\Core\Extension\CubeXExtensionCollections.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionDateTime.cs" Link="Source\Core\Extension\CubeXExtensionDateTime.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionDelegate.cs" Link="Source\Core\Extension\CubeXExtensionDelegate.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionEnum.cs" Link="Source\Core\Extension\CubeXExtensionEnum.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionNumbers.cs" Link="Source\Core\Extension\CubeXExtensionNumbers.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionObject.cs" Link="Source\Core\Extension\CubeXExtensionObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionReflection.cs" Link="Source\Core\Extension\CubeXExtensionReflection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionStream.cs" Link="Source\Core\Extension\CubeXExtensionStream.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionString.cs" Link="Source\Core\Extension\CubeXExtensionString.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Extension\CubeXExtensionXml.cs" Link="Source\Core\Extension\CubeXExtensionXml.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Collection\CubeXInspectorCollectionColumn.cs" Link="Source\Core\Inspector\Collection\CubeXInspectorCollectionColumn.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Collection\CubeXInspectorCollectionInLine.cs" Link="Source\Core\Inspector\Collection\CubeXInspectorCollectionInLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Collection\CubeXInspectorCollectionReorderable.cs" Link="Source\Core\Inspector\Collection\CubeXInspectorCollectionReorderable.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Condition\CubeXInspectorConditionEnabled.cs" Link="Source\Core\Inspector\Condition\CubeXInspectorConditionEnabled.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Condition\CubeXInspectorConditionVisible.cs" Link="Source\Core\Inspector\Condition\CubeXInspectorConditionVisible.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlButton.cs" Link="Source\Core\Inspector\Controls\CubeXInspectorControlButton.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlEnumButton.cs" Link="Source\Core\Inspector\Controls\CubeXInspectorControlEnumButton.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlEnumFlagsButton.cs" Link="Source\Core\Inspector\Controls\CubeXInspectorControlEnumFlagsButton.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Controls\CubeXInspectorControlPreview.cs" Link="Source\Core\Inspector\Controls\CubeXInspectorControlPreview.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorAttributesBase.cs" Link="Source\Core\Inspector\CubeXInspectorAttributesBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorInterface.cs" Link="Source\Core\Inspector\CubeXInspectorInterface.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorPropertyDesc.cs" Link="Source\Core\Inspector\CubeXInspectorPropertyDesc.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\CubeXInspectorSupport.cs" Link="Source\Core\Inspector\CubeXInspectorSupport.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationBackground.cs" Link="Source\Core\Inspector\Decoration\CubeXInspectorDecorationBackground.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationBoxing.cs" Link="Source\Core\Inspector\Decoration\CubeXInspectorDecorationBoxing.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationForeground.cs" Link="Source\Core\Inspector\Decoration\CubeXInspectorDecorationForeground.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Decoration\CubeXInspectorDecorationIndent.cs" Link="Source\Core\Inspector\Decoration\CubeXInspectorDecorationIndent.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescAbbreviation.cs" Link="Source\Core\Inspector\Desc\CubeXInspectorDescAbbreviation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescCategory.cs" Link="Source\Core\Inspector\Desc\CubeXInspectorDescCategory.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescCategoryOrder.cs" Link="Source\Core\Inspector\Desc\CubeXInspectorDescCategoryOrder.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescDescriptionType.cs" Link="Source\Core\Inspector\Desc\CubeXInspectorDescDescriptionType.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescDisplayName.cs" Link="Source\Core\Inspector\Desc\CubeXInspectorDescDisplayName.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescPropertyOrder.cs" Link="Source\Core\Inspector\Desc\CubeXInspectorDescPropertyOrder.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Desc\CubeXInspectorDescShortName.cs" Link="Source\Core\Inspector\Desc\CubeXInspectorDescShortName.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Events\CubeXInspectorEventValueChanged.cs" Link="Source\Core\Inspector\Events\CubeXInspectorEventValueChanged.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupGrouping.cs" Link="Source\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupGrouping.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupInGroup.cs" Link="Source\Core\Inspector\LayoutGroup\CubeXInspectorLayoutGroupInGroup.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Methods\CubeXInspectorMethodArgFile.cs" Link="Source\Core\Inspector\Methods\CubeXInspectorMethodArgFile.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Methods\CubeXInspectorMethodCall.cs" Link="Source\Core\Inspector\Methods\CubeXInspectorMethodCall.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberFormat.cs" Link="Source\Core\Inspector\Number\CubeXInspectorNumberFormat.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberMax.cs" Link="Source\Core\Inspector\Number\CubeXInspectorNumberMax.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberMin.cs" Link="Source\Core\Inspector\Number\CubeXInspectorNumberMin.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberRandom.cs" Link="Source\Core\Inspector\Number\CubeXInspectorNumberRandom.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberRange.cs" Link="Source\Core\Inspector\Number\CubeXInspectorNumberRange.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Number\CubeXInspectorNumberStep.cs" Link="Source\Core\Inspector\Number\CubeXInspectorNumberStep.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Validation\CubeXInspectorValidation.cs" Link="Source\Core\Inspector\Validation\CubeXInspectorValidation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueBase.cs" Link="Source\Core\Inspector\Value\CubeXInspectorValueBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueDefault.cs" Link="Source\Core\Inspector\Value\CubeXInspectorValueDefault.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueIndex.cs" Link="Source\Core\Inspector\Value\CubeXInspectorValueIndex.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Inspector\Value\CubeXInspectorValueList.cs" Link="Source\Core\Inspector\Value\CubeXInspectorValueList.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXInterfaceCalculation.cs" Link="Source\Core\Interfaces\CubeXInterfaceCalculation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXInterfaceData.cs" Link="Source\Core\Interfaces\CubeXInterfaceData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXnterfaceIdentifier.cs" Link="Source\Core\Interfaces\CubeXnterfaceIdentifier.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Interfaces\CubeXnterfaceSystem.cs" Link="Source\Core\Interfaces\CubeXnterfaceSystem.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Logger\CubeXLoggerCommon.cs" Link="Source\Core\Logger\CubeXLoggerCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Logger\CubeXLoggerDispatcher.cs" Link="Source\Core\Logger\CubeXLoggerDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Logger\CubeXLoggerView.cs" Link="Source\Core\Logger\CubeXLoggerView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Message\CubeXMessageCommon.cs" Link="Source\Core\Message\CubeXMessageCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Message\CubeXMessageDispatcher.cs" Link="Source\Core\Message\CubeXMessageDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ObjectPool\CubeXObjectPoolCommon.cs" Link="Source\Core\ObjectPool\CubeXObjectPoolCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ObjectPool\CubeXObjectPoolDispatcher.cs" Link="Source\Core\ObjectPool\CubeXObjectPoolDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ObjectPool\CubeXObjectPoolInteface.cs" Link="Source\Core\ObjectPool\CubeXObjectPoolInteface.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Parameters\CubeXParameterItem.cs" Link="Source\Core\Parameters\CubeXParameterItem.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Parameters\CubeXParameterObject.cs" Link="Source\Core\Parameters\CubeXParameterObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Parameters\CubeXParameterPrimitive.cs" Link="Source\Core\Parameters\CubeXParameterPrimitive.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationMember.cs" Link="Source\Core\Serialization\CubeXSerializationMember.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorCollectionModel.cs" Link="Source\Core\Serialization\Serializator\CubeXSerializatorCollectionModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\CubeXUnitMeasurementCommon.cs" Link="Source\Core\UnitMeasurement\CubeXUnitMeasurementCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\CubeXUnitMeasurementType.cs" Link="Source\Core\UnitMeasurement\CubeXUnitMeasurementType.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\CubeXUnitMeasurementUnits.cs" Link="Source\Core\UnitMeasurement\CubeXUnitMeasurementUnits.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitArea.cs" Link="Source\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitArea.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitLength.cs" Link="Source\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitLength.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitThing.cs" Link="Source\Core\UnitMeasurement\Units\CubeXUnitMeasurementUnitThing.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\CubeXPatternState.cs" Link="Source\Patterns\CubeXPatternState.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocument.cs" Link="Source\Patterns\Document\CubeXPatternDocument.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentCollection.cs" Link="Source\Patterns\Document\CubeXPatternDocumentCollection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentCollectionView.cs" Link="Source\Patterns\Document\CubeXPatternDocumentCollectionView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentHierarchy.cs" Link="Source\Patterns\Document\CubeXPatternDocumentHierarchy.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Document\CubeXPatternDocumentHierarchyView.cs" Link="Source\Patterns\Document\CubeXPatternDocumentHierarchyView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Grouping\CubeXPatternGroupingCommon.cs" Link="Source\Patterns\Grouping\CubeXPatternGroupingCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModel.cs" Link="Source\Patterns\Hierarchy\CubeXPatternHierarchyModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelBegin.cs" Link="Source\Patterns\Hierarchy\CubeXPatternHierarchyModelBegin.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelLast.cs" Link="Source\Patterns\Hierarchy\CubeXPatternHierarchyModelLast.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelView.cs" Link="Source\Patterns\Hierarchy\CubeXPatternHierarchyModelView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelViewBegin.cs" Link="Source\Patterns\Hierarchy\CubeXPatternHierarchyModelViewBegin.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Hierarchy\CubeXPatternHierarchyModelViewLast.cs" Link="Source\Patterns\Hierarchy\CubeXPatternHierarchyModelViewLast.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUICollection.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUICollection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUICollectionView.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUICollectionView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIContextMenu.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUIContextMenu.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIExploreModel.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUIExploreModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchy.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchy.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchyView.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUIHierarchyView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIRepository.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUIRepository.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\InteractionUI\CubeXPatternInteractionUIStaticData.cs" Link="Source\Patterns\InteractionUI\CubeXPatternInteractionUIStaticData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Memento\CubeXPatternMemento.cs" Link="Source\Patterns\Memento\CubeXPatternMemento.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Memento\CubeXPatternMementoModel.cs" Link="Source\Patterns\Memento\CubeXPatternMementoModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternCollectionModel.cs" Link="Source\Patterns\Model\CubeXPatternCollectionModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternCollectionModelView.cs" Link="Source\Patterns\Model\CubeXPatternCollectionModelView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternModel.cs" Link="Source\Patterns\Model\CubeXPatternModel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternModelOwned.cs" Link="Source\Patterns\Model\CubeXPatternModelOwned.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Model\CubeXPatternModelView.cs" Link="Source\Patterns\Model\CubeXPatternModelView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Present\CubeXPatternPresentCommon.cs" Link="Source\Patterns\Present\CubeXPatternPresentCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepository.cs" Link="Source\Patterns\Repository\CubeXPatternRepository.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryAttributes.cs" Link="Source\Patterns\Repository\CubeXPatternRepositoryAttributes.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryDispatcher.cs" Link="Source\Patterns\Repository\CubeXPatternRepositoryDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryExtensionData.cs" Link="Source\Patterns\Repository\CubeXPatternRepositoryExtensionData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryQuery.cs" Link="Source\Patterns\Repository\CubeXPatternRepositoryQuery.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\CubeXPatternRepositoryStatic.cs" Link="Source\Patterns\Repository\CubeXPatternRepositoryStatic.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Database\CubeXPatternRepositoryDatabase.cs" Link="Source\Patterns\Repository\Database\CubeXPatternRepositoryDatabase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseMySQL.cs" Link="Source\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseMySQL.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseSQLite.cs" Link="Source\Patterns\Repository\Database\CubeXPatternRepositoryDatabaseSQLite.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\Excel\CubeXPatternRepositoryExcel.cs" Link="Source\Patterns\Repository\Excel\CubeXPatternRepositoryExcel.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\File\CubeXPatternRepositoryFile.cs" Link="Source\Patterns\Repository\File\CubeXPatternRepositoryFile.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\File\CubeXPatternRepositoryFilePrimitive.cs" Link="Source\Patterns\Repository\File\CubeXPatternRepositoryFilePrimitive.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Repository\File\CubeXPatternRepositoryFileRecord.cs" Link="Source\Patterns\Repository\File\CubeXPatternRepositoryFileRecord.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Scheme\CubeXPatternSchemeCommon.cs" Link="Source\Patterns\Scheme\CubeXPatternSchemeCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Scheme\CubeXPatternSchemeFlat.cs" Link="Source\Patterns\Scheme\CubeXPatternSchemeFlat.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\TreeNode\CubeXPatternTreeNode.cs" Link="Source\Patterns\TreeNode\CubeXPatternTreeNode.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\TreeNode\CubeXPatternTreeNodeView.cs" Link="Source\Patterns\TreeNode\CubeXPatternTreeNodeView.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Protection\CubeXProtectionInt.cs" Link="Source\Core\Protection\CubeXProtectionInt.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Protection\CubeXProtectionLong.cs" Link="Source\Core\Protection\CubeXProtectionLong.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Protection\CubeXProtectionSingle.cs" Link="Source\Core\Protection\CubeXProtectionSingle.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Reflection\CubeXReflectionCommon.cs" Link="Source\Core\Reflection\CubeXReflectionCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Reflection\CubeXReflectionDispatcher.cs" Link="Source\Core\Reflection\CubeXReflectionDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Reflection\CubeXReflectionType.cs" Link="Source\Core\Reflection\CubeXReflectionType.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationAttributes.cs" Link="Source\Core\Serialization\CubeXSerializationAttributes.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationBase.cs" Link="Source\Core\Serialization\CubeXSerializationBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationData.cs" Link="Source\Core\Serialization\CubeXSerializationData.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\CubeXSerializationDispatcher.cs" Link="Source\Core\Serialization\CubeXSerializationDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorCollection.cs" Link="Source\Core\Serialization\Serializator\CubeXSerializatorCollection.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorDictionary.cs" Link="Source\Core\Serialization\Serializator\CubeXSerializatorDictionary.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorObject.cs" Link="Source\Core\Serialization\Serializator\CubeXSerializatorObject.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Serialization\Serializator\CubeXSerializatorPrimitive.cs" Link="Source\Core\Serialization\Serializator\CubeXSerializatorPrimitive.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ServiceOS\CubeXBaseServiceBackgroundWorker.cs" Link="Source\Core\ServiceOS\CubeXBaseServiceBackgroundWorker.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\ServiceOS\CubeXBaseServiceFileDialogs.cs" Link="Source\Core\ServiceOS\CubeXBaseServiceFileDialogs.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Task\CubeXTaskCommon.cs" Link="Source\Core\Task\CubeXTaskCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Task\CubeXTaskDispatcher.cs" Link="Source\Core\Task\CubeXTaskDispatcher.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextBase.cs" Link="Source\Core\Text\CubeXTextBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextGenerateCodeBase.cs" Link="Source\Core\Text\CubeXTextGenerateCodeBase.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextGenerateCodeCSharp.cs" Link="Source\Core\Text\CubeXTextGenerateCodeCSharp.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextLine.cs" Link="Source\Core\Text\CubeXTextLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Core\Text\CubeXTextList.cs" Link="Source\Core\Text\CubeXTextList.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonAngle.cs" Link="Source\Math\Common\CubeXMathCommonAngle.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonEasing.cs" Link="Source\Math\Common\CubeXMathCommonEasing.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonFast.cs" Link="Source\Math\Common\CubeXMathCommonFast.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonInterpolation.cs" Link="Source\Math\Common\CubeXMathCommonInterpolation.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonStream.cs" Link="Source\Math\Common\CubeXMathCommonStream.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Common\CubeXMathCommonXml.cs" Link="Source\Math\Common\CubeXMathCommonXml.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\CubeXMathEx.cs" Link="Source\Math\CubeXMathEx.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2D.cs" Link="Source\Math\Geometry2D\CubeXGeometry2D.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DClosest.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DClosest.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DDistance.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DDistance.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DIntersect.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DIntersect.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DMatrix2x2.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DMatrix2x2.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DMatrix3x2.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DMatrix3x2.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DRect.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DRect.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DSize.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DSize.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\CubeXGeometry2DVector2.cs" Link="Source\Math\Geometry2D\CubeXGeometry2DVector2.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DCircle.cs" Link="Source\Math\Geometry2D\Primitive\CubeXGeometry2DCircle.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DLine.cs" Link="Source\Math\Geometry2D\Primitive\CubeXGeometry2DLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DRay.cs" Link="Source\Math\Geometry2D\Primitive\CubeXGeometry2DRay.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry2D\Primitive\CubeXGeometry2DSegment.cs" Link="Source\Math\Geometry2D\Primitive\CubeXGeometry2DSegment.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3D.cs" Link="Source\Math\Geometry3D\CubeXGeometry3D.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DClosest.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DClosest.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DDistance.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DDistance.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DIntersect.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DIntersect.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DMatrix3x3.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DMatrix3x3.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DMatrix4x4.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DMatrix4x4.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DQuaternion.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DQuaternion.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DTransform.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DTransform.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DVector3.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DVector3.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\CubeXGeometry3DVector4.cs" Link="Source\Math\Geometry3D\CubeXGeometry3DVector4.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DLine.cs" Link="Source\Math\Geometry3D\Primitive\CubeXGeometry3DLine.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DPlane.cs" Link="Source\Math\Geometry3D\Primitive\CubeXGeometry3DPlane.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DRay.cs" Link="Source\Math\Geometry3D\Primitive\CubeXGeometry3DRay.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DSegment.cs" Link="Source\Math\Geometry3D\Primitive\CubeXGeometry3DSegment.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Geometry3D\Primitive\CubeXGeometry3DSphere.cs" Link="Source\Math\Geometry3D\Primitive\CubeXGeometry3DSphere.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomCommon.cs" Link="Source\Math\Random\CubeXMathRandomCommon.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomGenerators.cs" Link="Source\Math\Random\CubeXMathRandomGenerators.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomGuarantee.cs" Link="Source\Math\Random\CubeXMathRandomGuarantee.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Math\Random\CubeXMathRandomNoise.cs" Link="Source\Math\Random\CubeXMathRandomNoise.cs" />
+    <Compile Include="..\..\UnityPlatform\Assets\Basis\Runtime\Patterns\Command\CubeXPatternCommand.cs" Link="Source\Patterns\Command\CubeXPatternCommand.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Source\Core\Base\" />
+    <Folder Include="Source\Core\Collections\" />
+    <Folder Include="Source\Core\Converters\" />
+    <Folder Include="Source\Core\Extension\" />
+    <Folder Include="Source\Core\Inspector\Collection\" />
+    <Folder Include="Source\Core\Inspector\Condition\" />
+    <Folder Include="Source\Core\Inspector\Controls\" />
+    <Folder Include="Source\Core\Inspector\Decoration\" />
+    <Folder Include="Source\Core\Inspector\Desc\" />
+    <Folder Include="Source\Core\Inspector\Events\" />
+    <Folder Include="Source\Core\Inspector\LayoutGroup\" />
+    <Folder Include="Source\Core\Inspector\Methods\" />
+    <Folder Include="Source\Core\Inspector\Number\" />
+    <Folder Include="Source\Core\Inspector\Validation\" />
+    <Folder Include="Source\Core\Inspector\Value\" />
+    <Folder Include="Source\Core\Interfaces\" />
+    <Folder Include="Source\Core\Logger\" />
+    <Folder Include="Source\Core\Message\" />
+    <Folder Include="Source\Core\ObjectPool\" />
+    <Folder Include="Source\Core\UnitMeasurement\Units\" />
+    <Folder Include="Source\Core\Parameters\" />
+    <Folder Include="Source\Patterns\Command\" />
+    <Folder Include="Source\Patterns\Hierarchy\" />
+    <Folder Include="Source\Patterns\InteractionUI\" />
+    <Folder Include="Source\Patterns\Memento\" />
+    <Folder Include="Source\Patterns\Model\" />
+    <Folder Include="Source\Patterns\Repository\File\" />
+    <Folder Include="Source\Patterns\Repository\Database\" />
+    <Folder Include="Source\Patterns\Repository\Excel\" />
+    <Folder Include="Source\Patterns\TreeNode\" />
+    <Folder Include="Source\Core\Protection\" />
+    <Folder Include="Source\Core\Reflection\" />
+    <Folder Include="Source\Core\Serialization\Serializator\" />
+    <Folder Include="Source\Core\ServiceOS\" />
+    <Folder Include="Source\Core\Task\" />
+    <Folder Include="Source\Core\Text\" />
+    <Folder Include="Source\Math\Common\" />
+    <Folder Include="Source\Math\Geometry2D\Primitive\" />
+    <Folder Include="Source\Math\Geometry3D\Primitive\" />
+    <Folder Include="Source\Math\Random\" />
+    <Folder Include="Source\Math\Spline\" />
+    <Folder Include="Source\Patterns\Document\" />
+    <Folder Include="Source\Patterns\Present\" />
+    <Folder Include="Source\Patterns\Scheme\" />
+    <Folder Include="Source\Patterns\Grouping\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="..\..\UnityPlatform\Assets\Basis\CHANGELOG.md" Link="CHANGELOG.md" />
+    <None Include="..\..\UnityPlatform\Assets\Basis\LICENSE.md" Link="LICENSE.md" />
+    <None Include="..\..\UnityPlatform\Assets\Basis\README.md" Link="README.md" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.20" />
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
