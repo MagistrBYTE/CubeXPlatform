@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{818E6A6E-CFA1-4AA2-95C7-E945FFE017DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnityPlatform", "UnityPlatform", "{2B750195-D6B1-4586-80BA-7938D120A4B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{C9EACBDD-6750-48DB-A74B-116623BC0D9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{A95CBE65-369C-4255-976E-C7D8767BB469}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B117BDA3-76C5-4F20-B98F-2E4C5C0900D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CubeXBasis", "Framework\CubeXBasis\CubeXBasis.csproj", "{88BC12CA-A9B4-4226-88F0-95C7D2852AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeXBasis", "UnityPlatform\CubeXBasis.csproj", "{3E9F31B6-50B8-EB53-1CD7-E0601679EB2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CubeXAppTest", "Desktop\CubeXAppTest\CubeXAppTest.csproj", "{F6E0A976-8351-4206-BEF3-7584DD19BDD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CubeXWindows", "Framework\CubeXWindows\CubeXWindows.csproj", "{E729D651-ED36-4315-A083-AEAC77AB3498}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88BC12CA-A9B4-4226-88F0-95C7D2852AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BC12CA-A9B4-4226-88F0-95C7D2852AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BC12CA-A9B4-4226-88F0-95C7D2852AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BC12CA-A9B4-4226-88F0-95C7D2852AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E9F31B6-50B8-EB53-1CD7-E0601679EB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E9F31B6-50B8-EB53-1CD7-E0601679EB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E9F31B6-50B8-EB53-1CD7-E0601679EB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E9F31B6-50B8-EB53-1CD7-E0601679EB2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E0A976-8351-4206-BEF3-7584DD19BDD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E0A976-8351-4206-BEF3-7584DD19BDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E0A976-8351-4206-BEF3-7584DD19BDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E0A976-8351-4206-BEF3-7584DD19BDD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E729D651-ED36-4315-A083-AEAC77AB3498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E729D651-ED36-4315-A083-AEAC77AB3498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E729D651-ED36-4315-A083-AEAC77AB3498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E729D651-ED36-4315-A083-AEAC77AB3498}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88BC12CA-A9B4-4226-88F0-95C7D2852AE5} = {C9EACBDD-6750-48DB-A74B-116623BC0D9E}
+		{3E9F31B6-50B8-EB53-1CD7-E0601679EB2C} = {2B750195-D6B1-4586-80BA-7938D120A4B3}
+		{F6E0A976-8351-4206-BEF3-7584DD19BDD4} = {A95CBE65-369C-4255-976E-C7D8767BB469}
+		{E729D651-ED36-4315-A083-AEAC77AB3498} = {C9EACBDD-6750-48DB-A74B-116623BC0D9E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EA39601-326C-4130-8CEA-94BF9F1DB99C}
+	EndGlobalSection
+EndGlobal
